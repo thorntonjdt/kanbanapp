@@ -1,0 +1,346 @@
+*{
+  box-sizing: border-box;
+}
+
+html,body,.app {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+header {
+  position: fixed;
+  top: 0;
+  display: inline-block;
+  z-index: 1000;
+}
+header a {
+  text-decoration: none;
+  color: black;
+}
+header h3 {
+  margin-left: 3px;
+  display: inline;
+}
+
+.list_label h1{
+ font-weight: 200;
+ color: #888888;
+ font-size: 20px;
+}
+
+
+.app {
+ white-space: nowrap;
+ background: #fcfcfc;
+}
+.controls {
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  z-index: 50;
+}
+.list {
+ position: relative;
+ display: inline-block;
+ vertical-align: top;
+ white-space: normal;
+ height: 100vh;
+ width: 33%;
+ padding: 1em 20px;
+ overflow: auto;
+}
+.list_label {
+  text-align: center;
+  margin-bottom: 1em;
+  border-bottom: 2px solid #888888;
+}
+.list_label h1 {
+  padding-right: 0.3em;
+  display: inline-block;
+  border-right: 1em solid;
+}
+.list:not(:last-child):after{
+ content: "";
+ position: absolute;
+ top: 0;
+ right: 0;
+ width: 1px;
+ height: 99%;
+ background: linear-gradient(to bottom, #eee 0%, #ccc 50%, #eee 100%) fixed;
+}
+.card {
+ position: relative;
+ z-index: 1;
+ background: #fff;
+ width: 100%;
+ padding: 10px 10px 10px 15px;
+ margin: 0 0 10px 0;
+ overflow: auto;
+ border: 1px solid #e5e5df;
+ border-radius: 3px;
+ box-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
+}
+
+.card_title {
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 1.1em;
+  color: #444;
+  margin: 0;
+  padding: 0.4em 0;
+  cursor: move;
+}
+.card_details h5 {
+  margin-bottom: 0.5em;
+  margin-top: 0.8em;
+  color: #888888;
+}
+.card_date {
+  font-size: 0.9em;
+}
+.card_description, .card_date{
+  width: 95%;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.card_days {
+  margin-left: 0.2em;
+  color: #6c6c6c;
+  position: absolute;
+  right: 0.3em;
+  top: 0.3em;
+  padding: 1em 0.2em;
+  border-radius: 30px;
+}
+
+.soon {
+  border: 2px solid orange;
+}
+
+.urgent {
+  border: 2px solid #c00;
+}
+
+.past {
+  text-decoration: line-through #c00;
+}
+.toggle-enter {
+ max-height: 0;
+ overflow: hidden;
+}
+.toggle-enter.toggle-enter-active {
+ max-height: 300px;
+ overflow: hidden;
+ transition: max-height .25s ease-in;
+}
+.toggle-leave {
+ max-height: 300px;
+ overflow: hidden;
+}
+.toggle-leave.toggle-leave-active {
+ max-height: 0;
+ overflow: hidden;
+ transition: max-height .25s ease-out;
+}
+
+.card.big {
+ position: absolute;
+ width: 20em;
+ height: 20em;
+ margin: auto;
+ padding: 15px;
+ top: 0; left: 0; bottom: 100px; right: 0;
+ z-index: 3;
+}
+.card.big input[type=text], input[type=date], textarea {
+ width : 100%;
+ margin: 10px 0;
+ font-size: 13px;
+ border: none;
+}
+.card.big input[type=text] {
+ font-size: 20px;
+ font-weight: bold;
+ }
+.card.big input[type=text]:focus,
+.card.big textarea:focus {
+ outline: dashed thin #999;
+ outline-offset: 2px;
+}
+.card.big label {
+ margin: 3px 0 7px 3px;
+ color: #a7a7a7;
+ display: inline-block;
+ width: 60px;
+}
+.actions {
+  text-align: center;
+}
+.card.big button {
+ font-size:14px;
+ margin: 3em auto;
+}
+.form-cntr {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0; bottom: 0; left: 0; right: 0;
+}
+.overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0; bottom: 0; left: 0; right: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+.trash-btn {
+  position: absolute;
+  bottom: -6em;
+  margin-bottom: 0.8em;
+  right: 11.6em;
+  transition: transform 0.6s ease-out;
+  transform: scale(1);
+  animation-name: load;
+  animation-fill-mode: forwards;
+  animation-delay: 0.3s;
+  animation-duration: 0.7s;
+  animation-timing-function: ease-out;
+}
+.animate {
+  transform: scale(1.25);
+  transition: transform 0.6s;
+}
+.float-button {
+ position: absolute;
+ bottom: -3em;
+ right: 3.5em;
+ margin-bottom: 0.2em;
+ height: 56px;
+ width: 56px;
+ background: #D43A2F;
+ color: white;
+ border-radius: 100%;
+ font-size: 34px;
+ text-align: center;
+ text-decoration: none;
+ line-height: 55px;
+ box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+ cursor: pointer;
+ animation-name: load;
+ animation-fill-mode: forwards;
+ animation-duration: 0.5s;
+ animation-timing-function: ease-out;
+}
+
+.float-button:hover {
+  transform: scale(1.05);
+}
+.github {
+  z-index: 20;
+  position: absolute;
+  bottom: 1em;
+  right: 0.4em;
+}
+.github:hover {
+  transform: scale(1.05);
+}
+.landing_page {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url("./img/home.png") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+.apps {
+  background-color: white;
+  width: 40.5em;
+  height: 24.3em;
+  border: 1px solid #cdcdcd;
+  border-radius: 2.5em;
+  box-shadow: 0 2px 2px 0  rgba(0, 0, 0, 0.25);
+  margin: 7em auto;
+  overflow: hidden;
+  padding: 2em 1.5em;
+}
+
+.img_cntr {
+  width:121.5px;
+  height: 121.5px;
+  border: 1px solid #cdcdcd;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.25);
+  border-radius: 3em;
+  overflow: hidden;
+  margin-top: 1.65em;
+}
+.img_cntr:hover {
+  border: 1px dashed black;
+}
+.selector {
+  float: left;
+  height: 100%;
+  width: 121.5px;
+}
+
+.preview {
+  float: right;
+  border-radius: 2em;
+  margin-top: 0.7em;
+  padding: 1em 0.5em;
+  padding-left: 1.4em;
+  background-color: rgba(0, 0, 0, 0.8);
+  border: 1px solid #cdcdcd;
+  border-radius: 2.5em;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.25);
+}
+.preview_title{
+  font-size: 30px;
+   color: #fafafa;
+   border-left: 0.5em solid #eee;
+   padding-left: 0.1em;
+   margin-right: 0;
+   padding-right: 0;
+   margin-bottom: 0.3em;
+   display: inline;
+}
+.comingsoon{
+  position: absolute;
+  left: 27.6em;
+  font-size: 1em;
+  color: white;
+  transform: rotate(45deg);
+  top: 20.25em;
+  color: black;
+}
+.connstatus {
+  position: fixed;
+  top: -1.1em;
+  left: 15em;
+  font-size: 0.7em;
+}
+.connstatus h4 {
+}
+.loader {
+  margin-top: 1.2em;
+    border: 3px solid #f3f3f3; /* Light grey */
+    border-top: 3px solid #888; /* Blue */
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    animation: spin 0.5s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+@keyframes load {
+  to {
+    bottom: 0.2em;
+  }
+}
